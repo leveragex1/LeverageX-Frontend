@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export async function savePnLDataToBackend(pnlData) {
   try {
-    const response = await axios.post('https://leveragex-backend-ewgf.onrender.com//api/pnl/save', {
+    const response = await axios.post('https://leveragex-backend-ewgf.onrender.com/api/pnl/save', {
       userId: pnlData.userId,  // The logged-in user's ID
       stocks: pnlData.stocks,  // Array of stocks
       totalBalance: pnlData.totalBalance // Total balance
