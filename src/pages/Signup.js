@@ -36,7 +36,7 @@ function Signup() {
         }
 
         try {
-            const url = `https://leveragex-backend-ewgf.onrender.com/auth/signup`;
+            const url = `https://leveragex-backend-dufk.onrender.com/auth/signup`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
