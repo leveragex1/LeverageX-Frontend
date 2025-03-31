@@ -20,7 +20,7 @@ const PnL = () => {
   const fetchUserStocks = async () => {
     try {
       const response = await axios.get(
-        `https://leveragex-backend-ewgf.onrender.com/api/users/stocks/${userId}`
+        `https://leveragex-backend-dufk.onrender.com/api/users/stocks/${userId}`
       );
       setStocks(response.data.stocks);
       setUserBalance(response.data.balance);
@@ -36,7 +36,7 @@ const PnL = () => {
       const watchlistType =
         storedWatchlistType || location.state?.watchlistType || "1"; // Default to WatchList1 if none is found
       const response = await axios.get(
-        `https://leveragex-backend-ewgf.onrender.com/api/watchlist${watchlistType}`
+        `https://leveragex-backend-dufk.onrender.com/api/watchlist${watchlistType}`
       );
       setUpdatedStocks(response.data);
     } catch (error) {
@@ -64,7 +64,7 @@ const PnL = () => {
         localStorage.getItem("watchlistType") ||
         "1";
       const response = await axios.post(
-        "https://leveragex-backend-ewgf.onrender.com/api/users/sell",
+        "https://leveragex-backend-dufk.onrender.com/api/users/sell",
         {
           userId,
           stockName,
