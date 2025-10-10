@@ -4,10 +4,13 @@ import axios from 'axios'; // For making HTTP requests to the backend
 import { ToastContainer } from 'react-toastify'; // For showing success and error notifications
 import { handleError, handleSuccess } from '../utils'; // Utility functions to show error and success messages
 import "../styles/Admin.css"; // Admin dashboard styles
+import backendUrl from "../updatelink.js"; //  update link in one click 
+
 
 // Dashboard component for managing users and stocks
 function Dashboard() {
     // State variables for managing users and stock data
+    
     const [users, setUsers] = useState([]); // List of users
     const [newUserBalance, setNewUserBalance] = useState({}); // Object to store updated balance for users
     const [watchList1Stocks, setWatchList1Stocks] = useState([]); // List of stocks in WatchList1
@@ -21,6 +24,8 @@ function Dashboard() {
     const [watchlist2_A, setWatchlist2_A] = useState(''); // Input for A value in WatchList2
     const [watchlist2_B, setWatchlist2_B] = useState(''); // Input for B value in WatchList2
     const [updateValues, setUpdateValues] = useState({}); // Object to store updated A/B values for stocks
+
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;  //    Update link 
 
     // useEffect hook to fetch user data and stock data when the component mounts
     useEffect(() => {
