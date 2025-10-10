@@ -4,7 +4,7 @@ import axios from 'axios'; // For making HTTP requests to the backend
 import { ToastContainer } from 'react-toastify'; // For showing success and error notifications
 import { handleError, handleSuccess } from '../utils'; // Utility functions to show error and success messages
 import "../styles/Admin.css"; // Admin dashboard styles
-import backendUrl from "../updatelink.js"; //  update link in one click 
+import ${backendUrl} from "../updatelink.js"; //  update link in one click 
 
 
 // Dashboard component for managing users and stocks
@@ -25,7 +25,7 @@ function Dashboard() {
     const [watchlist2_B, setWatchlist2_B] = useState(''); // Input for B value in WatchList2
     const [updateValues, setUpdateValues] = useState({}); // Object to store updated A/B values for stocks
 
-    const backendUrl = process.env.REACT_APP_BACKEND_URL;  //    Update link 
+    const ${backendUrl} = process.env.REACT_APP_BACKEND_URL;  //    Update link 
 
     // useEffect hook to fetch user data and stock data when the component mounts
     useEffect(() => {
@@ -43,7 +43,7 @@ function Dashboard() {
     // Function to fetch users from the backend
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('https://leveragex-backend-dufk.onrender.com/api/users'); // Get request to fetch users
+            const response = await axios.get(`${backendUrl}/api/users`); // Get request to fetch users
             setUsers(response.data); // Update users state with fetched data
         } catch (error) {
             console.error('Error fetching users:', error); // Handle errors while fetching users
@@ -53,7 +53,7 @@ function Dashboard() {
     // Function to fetch WatchList1 stocks from the backend
     const fetchWatchList1Stocks = async () => {
         try {
-            const response = await axios.get('https://leveragex-backend-dufk.onrender.com/api/watchlist1'); // Get request to fetch WatchList1 stocks
+            const response = await axios.get(`${backendUrl}/api/watchlist1`); // Get request to fetch WatchList1 stocks
             setWatchList1Stocks(response.data); // Update WatchList1 stocks state with fetched data
         } catch (error) {
             handleError('Error fetching WatchList1 stocks'); // Handle errors while fetching WatchList1 stocks
@@ -63,7 +63,7 @@ function Dashboard() {
     // Function to fetch WatchList2 stocks from the backend
     const fetchWatchList2Stocks = async () => {
         try {
-            const response = await axios.get('https://leveragex-backend-dufk.onrender.com/api/watchlist2'); // Get request to fetch WatchList2 stocks
+            const response = await axios.get(`${backendUrl}/api/watchlist2`); // Get request to fetch WatchList2 stocks
             setWatchList2Stocks(response.data); // Update WatchList2 stocks state with fetched data
         } catch (error) {
             handleError('Error fetching WatchList2 stocks'); // Handle errors while fetching WatchList2 stocks
@@ -86,7 +86,7 @@ function Dashboard() {
             return;
         }
         try {
-            await axios.put(`https://leveragex-backend-dufk.onrender.com/api/users/balance/${userId}`, { balance }); // PUT request to update balance
+            await axios.put(`${backendUrl}/api/users/balance/${userId}`, { balance }); // PUT request to update balance
             handleSuccess('User balance updated successfully!'); // Show success message
             fetchUsers(); // Refresh the user list after updating balance
         } catch (error) {
@@ -102,7 +102,7 @@ function Dashboard() {
             return;
         }
         try {
-            await axios.post('https://leveragex-backend-dufk.onrender.com/api/watchlist1', {
+            await axios.post('${backendUrl}/api/watchlist1', {
                 name: newStockName1,
                 price: newStockPrice1Input,
                 watchlist1_A,
@@ -128,7 +128,7 @@ function Dashboard() {
             return;
         }
         try {
-            await axios.post('https://leveragex-backend-dufk.onrender.com/api/watchlist2', {
+            await axios.post(`${backendUrl}/api/watchlist2`, {
                 name: newStockName2,
                 price: newStockPrice2Input,
                 watchlist2_A,
@@ -160,7 +160,7 @@ function Dashboard() {
             console.log(`Updating stockId: ${stockId}, watchlist: WatchList1, A: ${A}, B: ${B}`);
 
             // PUT request to update A/B values for WatchList1
-            const response = await axios.put(`https://leveragex-backend-dufk.onrender.com/api/watchlist1/${stockId}`, { A, B });
+            const response = await axios.put(`${backendUrl}/api/watchlist1/${stockId}`, { A, B });
 
             // Log the response to check if the update was successful
             console.log('Update response for WatchList1:', response.data);
@@ -186,7 +186,7 @@ function Dashboard() {
             console.log(`Updating stockId: ${stockId}, watchlist: WatchList2, A: ${A}, B: ${B}`);
 
             // PUT request to update A/B values for WatchList2
-            const response = await axios.put(`https://leveragex-backend-dufk.onrender.com/api/watchlist2/${stockId}`, { A, B });
+            const response = await axios.put(`${backendUrl}/api/watchlist2/${stockId}`, { A, B });
 
             // Log the response to check if the update was successful
             console.log('Update response for WatchList2:', response.data);
