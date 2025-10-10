@@ -1,3 +1,3 @@
-const backendUrl = process.env.REACT_APP_BACKEND_URL || "https://lx-backend-1jck.onrender.com";
+const backendUrl = process.env.REACT_APP_BACKEND_URL || "https:youtube.com";
 
 export default backendUrl;
